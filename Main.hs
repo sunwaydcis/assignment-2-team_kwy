@@ -1,5 +1,5 @@
 import System.IO
-import Data.List (maximumBy, minimumBy, sortBy, isPrefixOf)
+import Data.List (maximumBy, minimumBy, sortBy)
 import Data.Ord (comparing)
 
 splitOn :: Char -> String -> [String] 
