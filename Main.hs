@@ -93,7 +93,6 @@ solveQ3 bookings =
 
 main :: IO ()
 main = do
-    putStrLn "Reading dataset..."
     content <- readFile "Hotel_Dataset.csv"
     let rows = drop 1 (lines content)
     
