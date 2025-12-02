@@ -97,6 +97,31 @@ solveQ1 :: [Booking] -> (String, Int)
 solveQ1 = findMaxBookings . countByCountry
 
 
+-- QUESTION 2: Most Economical Hotel
+-- Uses your effPrice logic to find the hotel with the lowest effective price.
+data Booking2 = Booking2
+  { hName2 :: String
+  , price2 :: Float
+  , disc2 :: Float
+  , profitMargin2 :: Float
+  } deriving (Show, Eq)
+
+effPrice :: Booking2 -> Float
+effPrice (Booking2 _ p d pm) = (p * (1 - d)) * pm
+
+findLowestBooking :: [Booking2] -> Booking2
+findLowestBooking [] = error "No bookings!"
+findLowestBooking [b] = b
+findLowestBooking (b:bs) =
+    let minRest = findLowestBooking bs
+    in if effPrice b < effPrice minRest then b else minRest
+
+solveQ2 :: [Booking] -> String
+solveQ2 bs =
+    let bookings2 = [Booking2 (hotelName b) (bookingPrice b) (discount b) (profitMargin b) | b <- bs]
+    in hName2 (findLowestBooking bookings2)
+
+
 -- QUESTION 3: Most Profitable Hotel
 -- Criteria: Highest Profit Margin. If tied, Highest Visitor Count.
 solveQ3 :: [Booking] -> String
@@ -141,11 +166,11 @@ main = do
     let (country, count) = solveQ1 bookings
     putStrLn "\n=== 1. Country with Highest Bookings ==="
     putStrLn ("Destination Country: " ++ country)
-    putStrLn ("Total Bookings: " ++ show count)
+    putStrLn ("Hotel: " ++ solveQ2 bookings)
     
     -- --- QUESTION 2 not done yet ---
     putStrLn "\n=== 2. Most Economical Hotel Option ==="
-    putStrLn "    [Implement solveQ2 logic here]"
+    putStrLn "Hotel: " ++ solveQ2 bookings)"
     
     -- --- QUESTION 3 EXECUTION ---
     putStrLn "\n"
