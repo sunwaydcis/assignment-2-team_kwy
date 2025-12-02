@@ -1,0 +1,159 @@
+# ============================================================================
+# HASKELL BUILD ARTIFACTS
+# ============================================================================
+
+# Compiled executables
+*.exe
+hotel-analysis
+hotel-analysis.exe
+Assessment2-Hotel.exe
+
+# Cabal build directories
+dist/
+dist-newstyle/
+.cabal-sandbox/
+cabal.sandbox.config
+cabal.project.local
+cabal.project.local~
+
+# Stack build directories
+.stack-work/
+
+# Haskell object and interface files
+*.o
+*.hi
+*.dyn_o
+*.dyn_hi
+*.chi
+*.chs.h
+*.prof
+*.aux
+*.hp
+*.eventlog
+
+# Haskell Program Coverage
+.hpc/
+*.tix
+
+# GHC generated files
+.ghc.environment.*
+*.hie
+*.hie-bios
+
+
+# ============================================================================
+# PACKAGE DATABASES & CACHES
+# ============================================================================
+
+# Local package databases (where libraries are stored locally)
+.stack-work/
+dist-newstyle/
+*.conf.d/
+package.cache
+*.conf
+
+# Installed packages tracking
+.installed-pkgs
+
+
+# ============================================================================
+# THIRD-PARTY LIBRARIES (Don't commit these!)
+# ============================================================================
+
+# Libraries you import will be in these locations:
+# - split (Data.List.Split)
+# - base (Data.List, Data.Ord, Text.Read)
+
+# These are downloaded to system directories, but just in case:
+lib/
+libs/
+packages/
+.packages/
+
+
+# ============================================================================
+# IDE & EDITOR FILES
+# ============================================================================
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# IntelliJ / Haskell plugin
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Emacs
+*~
+\#*\#
+.dir-locals.el
+
+# Vim
+*.swp
+*.swo
+*.swn
+.netrwhist
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+
+# ============================================================================
+# OPERATING SYSTEM FILES
+# ============================================================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Linux
+*~
+.directory
+.Trash-*
+
+
+# ============================================================================
+# TEMPORARY & LOG FILES
+# ============================================================================
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.cache
+
+
+# ============================================================================
+# DOCUMENTATION BUILD
+# ============================================================================
+
+# Haddock documentation
+.haddock/
+docs/dist/
+docs/.shake/
+
