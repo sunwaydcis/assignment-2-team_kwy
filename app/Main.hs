@@ -107,7 +107,7 @@ data Booking2 = Booking2
   } deriving (Show, Eq)
 
 effPrice :: Booking2 -> Float
-effPrice (Booking2 _ p d pm) = (p * (1 - d)) * pm
+effPrice (Booking2 _ p d pm) = p * (1 - d) * pm
 
 findLowestBooking :: [Booking2] -> Booking2
 findLowestBooking [] = error "No bookings!"
