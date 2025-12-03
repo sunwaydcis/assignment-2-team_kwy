@@ -3,7 +3,17 @@ module Main where
 import System.IO
 import Data.List (maximumBy, nub)
 import Data.Ord (comparing)
+import Data.List (minimumBy)
 
+-- Get the minimum and maximum values
+getRange :: [Float] -> (Float, Float)
+getRange xs = (minimum xs, maximum xs)
+
+-- Min-Max normalization
+normalize :: Float -> (Float, Float) -> Float
+normalize x (minV, maxV)
+    | maxV == minV = 0
+    | otherwise = (x - minV) / (maxV - minV)
 
 -- Custom splitOn function to parse CSV lines without external dependencies.
 splitOn :: Char -> String -> [String] 
@@ -98,28 +108,23 @@ solveQ1 = findMaxBookings . countByCountry
 
 
 -- QUESTION 2: Most Economical Hotel
--- Uses your effPrice logic to find the hotel with the lowest effective price.
-data Booking2 = Booking2
-  { hName2 :: String
-  , price2 :: Float
-  , disc2 :: Float
-  , profitMargin2 :: Float
-  } deriving (Show, Eq)
-
-effPrice :: Booking2 -> Float
-effPrice (Booking2 _ p d pm) = p * (1 - d) * pm
-
-findLowestBooking :: [Booking2] -> Booking2
-findLowestBooking [] = error "No bookings!"
-findLowestBooking [b] = b
-findLowestBooking (b:bs) =
-    let minRest = findLowestBooking bs
-    in if effPrice b < effPrice minRest then b else minRest
-
 solveQ2 :: [Booking] -> String
-solveQ2 bs =
-    let bookings2 = [Booking2 (hotelName b) (bookingPrice b) (discount b) (profitMargin b) | b <- bs]
-    in hName2 (findLowestBooking bookings2)
+solveQ2 bookings =
+    let prices   = [bookingPrice b | b <- bookings]
+        discts   = [discount b | b <- bookings]
+        margins  = [profitMargin b | b <- bookings]
+
+        rp = getRange prices
+        rd = getRange discts
+        rm = getRange margins
+
+        score b =
+            let np = normalize (bookingPrice b) rp
+                nd = 1 - normalize (discount b) rd
+                nm = normalize (profitMargin b) rm
+            in np + nd + nm
+
+    in hotelName $ minimumBy (comparing score) bookings
 
 
 -- QUESTION 3: Most Profitable Hotel
@@ -170,7 +175,7 @@ main = do
     
     -- --- QUESTION 2 not done yet ---
     putStrLn "\n=== 2. Most Economical Hotel Option ==="
-    putStrLn "Hotel: " ++ solveQ2 bookings)"
+    putStrLn ("Hotel: " ++ solveQ2 bookings)
     
     -- --- QUESTION 3 EXECUTION ---
     putStrLn "\n"
