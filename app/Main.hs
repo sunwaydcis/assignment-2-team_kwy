@@ -173,7 +173,7 @@ main = do
     putStrLn ("Destination Country: " ++ country)
     putStrLn ("Hotel: " ++ solveQ2 bookings)
     
-    -- --- QUESTION 2 not done yet ---
+    -- --- QUESTION 2 EXECUTION ---
     putStrLn "\n=== 2. Most Economical Hotel Option ==="
     putStrLn ("Hotel: " ++ solveQ2 bookings)
     
