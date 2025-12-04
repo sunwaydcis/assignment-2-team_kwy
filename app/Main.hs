@@ -1,9 +1,8 @@
 module Main where
 
 import System.IO
-import Data.List (maximumBy, nub)
+import Data.List (maximumBy, nub, minimumBy)
 import Data.Ord (comparing)
-import Data.List (minimumBy)
 
 -- Get the minimum and maximum values
 getRange :: [Float] -> (Float, Float)
@@ -151,7 +150,7 @@ solveQ3 bookings =
         [ "3. Most Profitable Hotel (Profit Margin & Number of Visitors):"
         , "   Hotel:    " ++ name ++ " (" ++ country ++ ")"
         , "   Margin:   " ++ show margin
-        , "   Visitors: " ++ show (floor visitors :: Int)
+        , "   Visitors: " ++ show (visitors :: Int)
         ]
 
 
@@ -171,7 +170,7 @@ main = do
     let (country, count) = solveQ1 bookings
     putStrLn "\n=== 1. Country with Highest Bookings ==="
     putStrLn ("Destination Country: " ++ country)
-    putStrLn ("Hotel: " ++ solveQ2 bookings)
+    putStrLn ("Total Bookings: " ++ show count)
     
     -- --- QUESTION 2 EXECUTION ---
     putStrLn "\n=== 2. Most Economical Hotel Option ==="
