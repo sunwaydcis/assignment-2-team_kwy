@@ -178,7 +178,7 @@ main = do
     putStrLn ("Hotel: " ++ solveQ2 bookings)
     
     -- --- QUESTION 3 EXECUTION ---
-    putStrLn "\n"
+    putStrLn "\n=== 3. Most Profitable Hotel ==="
     putStrLn (solveQ3 bookings)
     
     putStrLn "\n======================================"
