@@ -147,7 +147,7 @@ solveQ3 bookings =
         ((name, country), (margin, visitors)) = maximumBy (comparing snd) hotelStats
 
     in unlines
-        [ "3. Most Profitable Hotel (Profit Margin & Number of Visitors):"
+        [ "Most Profitable Hotel (Profit Margin & Number of Visitors):"
         , "   Hotel:    " ++ name ++ " (" ++ country ++ ")"
         , "   Margin:   " ++ show margin
         , "   Visitors: " ++ show (visitors :: Int)
